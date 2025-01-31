@@ -1,4 +1,5 @@
 ﻿using System;
+DateTime dateTime = DateTime.Now;
 
 Console.WriteLine("Welcome to the 'Sick Day Rule' Program");
 
@@ -58,6 +59,9 @@ S for Surgery/Invasive Procedures");
 string? detail = Console.ReadLine();
 
 Console.WriteLine($"You would like to know your steroid dose for: ");
+
+// string ?questionPurpose = Console.ReadLine();
+
 switch (detail)
 {
     case "F":
@@ -85,6 +89,9 @@ switch (detail)
         Console.WriteLine("Surgery/Invasive Procedure");
         break;
 } // closing tag for switch
+
+// Purpose Summary - You would like to know your steroid dose for
+// string ?purposeSummary = $"{questionPurpose} {purposeAnswer}";
 
 switch (steroidMed)
 {
@@ -122,6 +129,7 @@ switch (steroidMed)
         else if (detail == "MN")
             Console.WriteLine("Take 5mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ");
 
+        // string ?predAdviceFeverCovid = Console.ReadLine();
         break; // break for case "P"
 
     case "H": // Hydrocortisone
@@ -132,6 +140,8 @@ switch (steroidMed)
         // Hydrocortisone dose > 10 mg
         else if (steroidDose > 10 && detail == "C")
             Console.WriteLine("Take 20 mg every 6 hours");
+
+        // string ?hcAdviceFeverCovid = Console.ReadLine();
         break; // break for case "H"
 
     default:
@@ -148,11 +158,33 @@ if (steroidMed == "P" || steroidMed == "H")
         Console.WriteLine("You may need 100mg of IM Hydrocortisone before major dental work anaesthesia – discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.");
     else if (detail == "S")
         Console.WriteLine(" 100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.");
+    // string ?otherAdvice = Console.ReadLine();
+
 }
 
+ string ?advice = Console.ReadLine();
 
+// Write SDR note:
 
-string? sickDayDose = Console.ReadLine();
+string? sickDayDose = $@"
+STEROID SICK DAY RULES 
+Patient: {firstName} {lastName} 
+MRN: {mrn}
+
+Steroid Medication: {(steroidMed == "H"? "Hydrocortisone" : "Prednisolone")}
+Daily dosage: {steroidDose} mg
+
+Dosage Advice for: {detail}
+
+{advice}
+
+What are the signs and symptoms of an adrenal crisis? 
+Low blood pressure. Feeling dizzy or light-headed. Fever, shivering or feeling very cold. Nausea and /or vomiting. Feeling very weak. Extreme tiredness, drowsiness or confusion. Aching muscles and/or joints. Stomach ache. Severe diarrhoea. 
+
+Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
+
+Generated on: {dateTime}
+";
 
 GenereateFile newFile = new GenereateFile();
 
