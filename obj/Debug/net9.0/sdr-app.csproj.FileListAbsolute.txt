@@ -1,0 +1,14 @@
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/bin/Debug/net9.0/sdr-app
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/bin/Debug/net9.0/sdr-app.deps.json
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/bin/Debug/net9.0/sdr-app.runtimeconfig.json
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/bin/Debug/net9.0/sdr-app.dll
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/bin/Debug/net9.0/sdr-app.pdb
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.AssemblyInfoInputs.cache
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.AssemblyInfo.cs
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.csproj.CoreCompileInputs.cache
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.dll
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/refint/sdr-app.dll
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.pdb
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.genruntimeconfig.cache
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/ref/sdr-app.dll
