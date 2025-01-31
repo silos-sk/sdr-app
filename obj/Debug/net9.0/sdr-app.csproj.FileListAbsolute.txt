@@ -12,3 +12,4 @@
 /Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.pdb
 /Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.genruntimeconfig.cache
 /Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/ref/sdr-app.dll
+/Users/ssilos/Dropbox/BYU/Winter 2025/CSE 310 - Applied Programming/sdr-app/obj/Debug/net9.0/sdr-app.sourcelink.json
