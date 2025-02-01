@@ -74,6 +74,43 @@ class Document
         return number;
     }
 
+    public int GetValidatedNumber(string prompt)
+    {
+        int number;
+        string? input;
+
+        do
+        {
+            Console.WriteLine(prompt);
+            input = Console.ReadLine()?.Trim();
+
+            if (!int.TryParse(input, out number) || number < 1 || number > 50)
+            {
+                Console.WriteLine("Invalid number. Please enter a number between 1 and 50.");
+            }
+
+        } while (!int.TryParse(input, out number) || number < 1 || number > 50);
+
+        return number;
+    }
+
+    public char GetValidatedChoice(string prompt, char[] validChoices)
+    {
+        string? input;
+        do
+        {
+            Console.WriteLine($"{prompt} ({string.Join("/", validChoices)}):");
+            input = Console.ReadLine()?.Trim().ToUpper();
+
+            if (string.IsNullOrEmpty(input) || input.Length != 1 || !validChoices.Contains(input[0]))
+            {
+                Console.WriteLine($"Invalid input. Please enter one of the following: {string.Join(", ", validChoices)}.");
+            }
+
+        } while (string.IsNullOrEmpty(input) || input.Length != 1 || !validChoices.Contains(input[0]));
+
+        return input[0]; // Return the valid character
+    }
     static bool IsValidName(string input)
     {
         return Regex.IsMatch(input, @"^[A-Za-z]+$"); // Ensures only letters (no numbers/symbols)

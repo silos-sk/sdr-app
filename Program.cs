@@ -34,20 +34,19 @@ Console.WriteLine($"\r\n[ Hi, {firstName} {lastName}; MRN: {mrn} ]\r\n");
 Console.WriteLine("Produce your own tailored Sick Day Rule dosage according to your current steroid medication. Follow the prompts below and answer accordingly. \r\n");
 
 // MEDICATION
-Console.WriteLine("> What steroid medication are you on? Type H for Hydrocortisone, P for Prednisolone");
 // store user-entered steroid medication to variable
-
-
-string? steroidMed = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
+char[] steroidMedOptions = { 'H', 'P' }; // Allowed options
+char steroidMed = document.GetValidatedChoice("> What steroid medication are you on? Type H for Hydrocortisone, P for Prednisolone", steroidMedOptions);
 
 // Medication Dose
-Console.WriteLine("> What daily dosage are you on? Enter number in mg");
 // store user-entered steroid dose to variable
-int? steroidDose = Convert.ToInt32(Console.ReadLine());
+int steroidDose = document.GetValidatedNumber("> What daily dosage are you on? Enter number in mg");
 Console.WriteLine(""); // spacer
 
+string steroidMedStr = Convert.ToString(steroidMed);
+
 // Display user-entered steroid medication
-Console.WriteLine($"You are currently on [ {(steroidMed == "H" ? "Hydrocortisone" : "Prednisolone")} {steroidDose} mg ].");
+Console.WriteLine($"You are currently on [ {(steroidMedStr == "H" ? "Hydrocortisone" : "Prednisolone")} {steroidDose} mg ].");
 Console.WriteLine("");// spacer
 
 // PURPOSE
@@ -108,7 +107,7 @@ Scenario[] conditions =
 string advice = "";
 
 // DOSAGE ADVICE
-switch (steroidMed)
+switch (steroidMedStr)
 {   // Prednisolone
     case "P": 
         // Prednisolone dose for Fever
@@ -198,7 +197,7 @@ switch (steroidMed)
         break;
 } // closing switch steroidMed statement
 
-if (steroidMed == "P" || steroidMed == "H") // Either on Prednisolone/HC
+if (steroidMedStr == "P" || steroidMedStr == "H") // Either on Prednisolone/HC
 {
     if (detail == "P") // Pregnancy
         {
@@ -213,7 +212,7 @@ if (steroidMed == "P" || steroidMed == "H") // Either on Prednisolone/HC
     }
     else if (detail == "S") // Surgery/Invasive Procedures
     {
-        advice = " 100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.";
+        advice = "100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.";
         document.DisplayText(advice);
     }    
 }
@@ -224,7 +223,7 @@ STEROID SICK DAY RULES
 Patient: {firstName} {lastName} 
 MRN: {mrn}
 
-Steroid Medication: {(steroidMed == "H"? "Hydrocortisone" : "Prednisolone")}
+Steroid Medication: {(steroidMedStr == "H"? "Hydrocortisone" : "Prednisolone")}
 Daily dosage: {steroidDose} mg
 
 Dosage Advice for: {conditionQuery}
