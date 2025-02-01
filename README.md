@@ -1,4 +1,4 @@
-## Sick Day Rule - Console App
+## Sick Day Rules - Console App
 
 This is a C# console-based app aimed at providing information on 'Sick Day Rules' on steroid dosage for patients with adrenal insufficiency. It provides prompts to gather user-tailored medical background and produce the summarized content in a file.
 

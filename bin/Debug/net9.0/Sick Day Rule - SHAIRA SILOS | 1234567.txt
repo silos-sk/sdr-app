@@ -6,9 +6,9 @@ MRN: 1234567
 Steroid Medication: PREDNISOLONE
 Daily dosage: 5 mg
 
-Dosage Advice for: 
+Dosage Advice for: SURGERY/INVASIVE PROCEDURES
 
-You may need 100 mg of IM Hydrocortisone before major dental work anaesthesia - discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.
+100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.
 
 ***
 What are the signs and symptoms of an adrenal crisis? 
@@ -19,4 +19,4 @@ If you are unwell, make sure that the person treating you knows you are at risk 
 
 Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
 
-Generated on: 2/1/2025 7:50:44 PM
+Generated on: 2/1/2025 7:55:02 PM
