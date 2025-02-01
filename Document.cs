@@ -15,13 +15,6 @@ class Document
     {
         Console.WriteLine(a);
     }
-
-    public void StoreNormalizedUpper(string b)
-    {
-        Console.ReadLine()?.Trim().ToUpper();
-    }
-
-
      
 }
 

@@ -1,53 +1,53 @@
 ﻿DateTime dateTime = DateTime.Now;
 
+Document document = new Document();
+
 Console.WriteLine("Welcome to the 'Sick Day Rule' Program");
 
 // ENTER USER DETAILS:
 // Type your first name and press enter
 Console.WriteLine("Enter your first name:");
 // store user-entered first name to variable
-string? firstName = Console.ReadLine();
+string? firstName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
 // Type your last name and press enter
 Console.WriteLine("Enter your last name:");
 // store user-entered last name to variable
-string? lastName = Console.ReadLine();
+string? lastName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
 // Type your MRN and press enter
-Console.WriteLine("Enter your MRN (if known)");
+Console.WriteLine("Enter your MRN:");
 // store user-entered mrn to variable
-string? mrn = Console.ReadLine();
+string? mrn = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
 // Print the user info
-Console.WriteLine($"Hi, {firstName} {lastName}; MRN: {mrn}");
-Console.WriteLine("Produce your own tailored Sick Day Rule dosage according to your current steroid medication. Follow the prompts below and answer accordingly.");
-Console.WriteLine("");
+Console.WriteLine($"\r\n[ Hi, {firstName} {lastName}; MRN: {mrn} ]\r\n");
+Console.WriteLine("Produce your own tailored Sick Day Rule dosage according to your current steroid medication. Follow the prompts below and answer accordingly. \r\n");
 
 // MEDICATION
 Console.WriteLine("> What steroid medication are you on? Type H for Hydrocortisone, P for Prednisolone");
 // store user-entered steroid medication to variable
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-string? steroidMed = Console.ReadLine().ToUpper();
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
+string? steroidMed = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
 // Medication Dose
 Console.WriteLine("> What daily dosage are you on? Enter number in mg");
 // store user-entered steroid dose to variable
 int? steroidDose = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(""); // spacer
 
-Console.WriteLine("");
 // Display user-entered steroid medication
-Console.WriteLine($"You are currently on {(steroidMed == "H" ? "Hydrocortisone" : "Prednisolone")} {steroidDose} mg");
-Console.WriteLine("");
+Console.WriteLine($"You are currently on [ {(steroidMed == "H" ? "Hydrocortisone" : "Prednisolone")} {steroidDose} mg ].");
+Console.WriteLine("");// spacer
 
 // PURPOSE
 Console.WriteLine("> Are you experiencing Symptoms or having a Procedure done? Type P for Procedure, S for Symptoms");
 // store user-entered purpose to variable
-
 string? purpose = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
 if (purpose == "S")
 {
+    Console.WriteLine("\r\nChoose from the following options and type the corresponding letter:");
     Console.WriteLine(@"F for Fever
 C for Covid
 DV for Diarrhea/Vomiting 
@@ -61,9 +61,10 @@ MJ for Major Dental Surgery
 S for Surgery/Invasive Procedures");
 }
 ;
-
 string? detail = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
+Console.WriteLine(); //spacer
+// Store list of options to a Scenario structure
 Scenario[] conditions =
         [
             new Scenario("F", "Fever"),
@@ -84,7 +85,7 @@ Scenario[] conditions =
         if (condition.Key == detail)
         {
             conditionQuery = condition.Value;
-            Console.WriteLine($"You would like to know your steroid dose for {conditionQuery}");
+            Console.WriteLine($"You would like to know your steroid dose for {conditionQuery}: \r\n");
             
             found = true;
         }
@@ -95,101 +96,112 @@ Scenario[] conditions =
     }
 
 string advice = "";
-Document displayAdvice = new Document ();
+
+// DOSAGE ADVICE
 switch (steroidMed)
-{
-    case "P": // Prednisolone
-              // Prednisolone dose for Fever
-              // Prednisolone dose <= 10 mg
+{   // Prednisolone
+    case "P": 
+        // Prednisolone dose for Fever
         if (steroidDose <= 10 && detail == "F")
-        {
+        { // Prednisolone dose <= 10 mg
             advice = "Take 5 mg twice daily";
-            displayAdvice.DisplayText(advice);
+            document.DisplayText(advice);
         } 
         // Prednisolone dose > 10 mg
         else if (steroidDose > 10 && detail == "F")
         {
             advice = "Split daily dose to twice daily";
-            displayAdvice.DisplayText(advice);
+            document.DisplayText(advice);
         }
 
         // Prednisolone dose for Covid
-        // Prednisolone dose <= 10 mg
         else if (steroidDose <= 10 && detail == "C")
-        {
+        { // Prednisolone dose <= 10 mg
             advice = "Take 10mg twice daily";
-            displayAdvice.DisplayText(advice);
+            document.DisplayText(advice);
         }
         // Prednisolone dose > 10 mg
         else if (steroidDose > 10 && detail == "C")
          {   
             advice = "Split daily dose to twice daily, e.g. 20 mg daily - take 10 mg twice daily";
-            displayAdvice.DisplayText(advice);
+            document.DisplayText(advice);
          }
 
         else if (detail == "DV") // if Diarrhea/Vomiting
         {
             advice = "If you vomit once, take an extra 5 mg of Prednisolone.  !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection. ";
-            displayAdvice.DisplayText(advice);
+            document.DisplayText(advice);
         }
             
         else if (detail == "E") // Extremely unwell
         {
-            advice = "Take an extra 20mg of Prednisolone.";
-            displayAdvice.DisplayText(advice);
+            advice = "Take an extra 20mg of Prednisolone and seek medical advice.";
+            document.DisplayText(advice);
         }
             
-        else if (detail == "P") // Pregnancy
-        {
-            advice = "Carry on normal doses unless advised by your HCP.  At the onset of labour or start of a caesarean section, to start a continuous IV infusion of 200 mg Hydrocortisone over 24 hours (alternatively 50 mg of Hydrocortisone IV or IM every 6 hours). Double usual oral dose for 48 hours after the baby is born.  ";
-            displayAdvice.DisplayText(advice);
-        }
-        
-        else if (detail == "MJ")
-        {
-            advice = "Take 5mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ";
-            displayAdvice.DisplayText(advice);
-        }
-
-        else if (detail == "MN")
-            Console.WriteLine("Take 5mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ");
-            displayAdvice.DisplayText(advice);
-
+        else if (detail == "MN") // Minor Dental Surgery
+            advice = "Take 5 mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ";
+            document.DisplayText(advice);
         break; // break for case "P"
 
-    case "H": // Hydrocortisone
-              // Hydrocortisone dose for Fever
-              // Hydrocortisone dose > 10 mg
-        if (steroidDose > 10 && detail == "F")
-        {
-            advice = "Take 20 mg immediately, then 10 mg 6 hourly";
-            displayAdvice.DisplayText(advice);
+    // Hydrocortisone
+    case "H": 
+        // Hydrocortisone dose for Fever
+        if (steroidDose >= 10 && detail == "F")
+        { // Hydrocortisone dose > 10 mg
+            advice = "Take 20 mg of Hydrocortisone immediately, then 10 mg 6 hourly";
+            document.DisplayText(advice);
         }
-        // Hydrocortisone dose > 10 mg
-    
-        else if (steroidDose > 10 && detail == "C")
+        // Hydrocortisone dose >= 10 mg for Covid
+        else if (steroidDose >= 10 && detail == "C")
         {
-            advice = "Take 20 mg every 6 hours.";
-            displayAdvice.DisplayText(advice);
+            advice = "Take 20 mg of Hydrocortisone every 6 hours.";
+            document.DisplayText(advice);
         }
-
+         // Hydrocortisone dose < 10 mg
+        else if (steroidDose < 10)
+        { 
+            advice = "Double your current dose for the duration of your illness. If it lasts < 7 days, you can switch back to your usual dose the day after. If it lasts > 7 days, seek advice from your clinician.";
+            document.DisplayText(advice);
+        }
+         else if (detail == "DV") // if Diarrhea/Vomiting
+        {
+            advice = "If you vomit once, take an extra 20 mg of Hydrocortisone by mouth. !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection. ";
+            document.DisplayText(advice);
+        }
+        else if (detail == "MN") // Minor Dental Surgery
+        {
+            advice = "Take 20 mg of Hydrocortisone one hour prior to the procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ";
+            document.DisplayText(advice);
+        }
+        else if (detail == "E") // Extremely unwell
+        {
+            advice = "Take an extra 50 mg of Hydrocortisone and seek medical advice.";
+            document.DisplayText(advice);
+        }
         break; // break for case "H"
 
     default:
         break;
 } // closing switch steroidMed statement
 
-if (steroidMed == "P" || steroidMed == "H")
+if (steroidMed == "P" || steroidMed == "H") // Either on Prednisolone/HC
 {
-    if (detail == "MJ")
+    if (detail == "P") // Pregnancy
+        {
+            advice = "Carry on normal doses unless advised by your HCP.  At the onset of labour or start of a caesarean section, to start a continuous IV infusion of 200 mg Hydrocortisone over 24 hours (alternatively 50 mg of Hydrocortisone IV or IM every 6 hours). Double usual oral dose for 48 hours after the baby is born.  ";
+            document.DisplayText(advice);
+        }
+        
+    else if (detail == "MJ") // Major Dental Surgery
     {
         advice = "You may need 100mg of IM Hydrocortisone before major dental work anaesthesia – discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.";
-        displayAdvice.DisplayText(advice);
+        document.DisplayText(advice);
     }
-    else if (detail == "S")
+    else if (detail == "S") // Surgery/Invasive Procedures
     {
         advice = " 100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.";
-        displayAdvice.DisplayText(advice);
+        document.DisplayText(advice);
     }    
 }
 
