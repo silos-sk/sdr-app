@@ -10,6 +10,7 @@ This is a C# console-based app aimed at providing information on 'Sick Day Rules
 5. Functions
 6. Classes
 7. Structures and Unions
+8. Read/Write to a File
 
 ## Demo Video
 Video walkthrough inluded in Canvas submission
