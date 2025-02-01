@@ -9,7 +9,7 @@
 
         while (restart) // PROGRAM START
         {
-            Console.WriteLine("\r\n*** Welcome to the 'Sick Day Rule' Program ***");
+            Console.WriteLine("\r\n*** Welcome to the 'Sick Day Rules' Program ***");
 
             // PATIENT DETAILS
             string firstName = document.GetValidatedName("Enter your first name:");
