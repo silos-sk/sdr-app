@@ -14,11 +14,11 @@ This is a C# console-based app aimed at providing information on 'Sick Day Rules
 ## Demo Video
 Video walkthrough inluded in Canvas submission
 
-# Development Environment
+## Development Environment
 C#
 VS Code
 
-# Useful Websites
+## Useful Websites
 
 - [W3schools](https://www.w3schools.com/cs/index.php)
 - [Microsoft | C# Language Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
@@ -26,7 +26,7 @@ VS Code
 - [StackOverflow](https://stackoverflow.com/questions/tagged/c%23)
 - [C# Tutorial for Beginners - Teddy Smith](https://www.youtube.com/watch?v=MDh6wX9T0Ow&list=PL82C6-O4XrHcblXkHA4dLcnb_ipVkKHch)
 
-# Future Work
+## Future Work
 Here are a list of things that I need to fix, improve, or add in the future.
 
 - Refactor code to separate class content accordingly
