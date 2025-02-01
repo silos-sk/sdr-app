@@ -5,31 +5,38 @@ bool restart = true;
 
 while (restart) // PROGRAM START
 {
-Console.WriteLine("Welcome to the 'Sick Day Rule' Program");
+Console.WriteLine("\r\n*** Welcome to the 'Sick Day Rule' Program ***");
 
 // ENTER USER DETAILS:
 // Type your first name and press enter
-Console.WriteLine("Enter your first name:");
-// store user-entered first name to variable
-string? firstName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
+// Console.WriteLine("Enter your first name:");
+// // store user-entered first name to variable
+// string? firstName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
-// Type your last name and press enter
-Console.WriteLine("Enter your last name:");
-// store user-entered last name to variable
-string? lastName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
+// // Type your last name and press enter
+// Console.WriteLine("Enter your last name:");
+// // store user-entered last name to variable
+// string? lastName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
-// Type your MRN and press enter
-Console.WriteLine("Enter your MRN:");
-// store user-entered mrn to variable
-string? mrn = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
+// // Type your MRN and press enter
+// Console.WriteLine("Enter your MRN:");
+// // store user-entered mrn to variable
+// string? mrn = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
-// Print the user info
+// // Print the user info
+// Console.WriteLine($"\r\n[ Hi, {firstName} {lastName}; MRN: {mrn} ]\r\n");
+
+string firstName = document.GetValidatedName("Enter your first name:");
+string lastName = document.GetValidatedName("Enter your last name:");
+long mrn = document.GetValidatedMRN("Enter your 7-digit MRN:");
+
 Console.WriteLine($"\r\n[ Hi, {firstName} {lastName}; MRN: {mrn} ]\r\n");
 Console.WriteLine("Produce your own tailored Sick Day Rule dosage according to your current steroid medication. Follow the prompts below and answer accordingly. \r\n");
 
 // MEDICATION
 Console.WriteLine("> What steroid medication are you on? Type H for Hydrocortisone, P for Prednisolone");
 // store user-entered steroid medication to variable
+
 
 string? steroidMed = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
 
@@ -107,44 +114,47 @@ switch (steroidMed)
         // Prednisolone dose for Fever
         if (steroidDose <= 10 && detail == "F")
         { // Prednisolone dose <= 10 mg
-            advice = "Take 5 mg twice daily";
+            advice = "Take 5 mg twice daily.";
             document.DisplayText(advice);
         } 
         // Prednisolone dose > 10 mg
         else if (steroidDose > 10 && detail == "F")
         {
-            advice = "Split daily dose to twice daily";
+            advice = "Split daily dose to twice daily.";
             document.DisplayText(advice);
         }
 
         // Prednisolone dose for Covid
         else if (steroidDose <= 10 && detail == "C")
         { // Prednisolone dose <= 10 mg
-            advice = "Take 10mg twice daily";
+            advice = "Take 10 mg twice daily.";
             document.DisplayText(advice);
         }
         // Prednisolone dose > 10 mg
         else if (steroidDose > 10 && detail == "C")
          {   
-            advice = "Split daily dose to twice daily, e.g. 20 mg daily - take 10 mg twice daily";
+            advice = "Split daily dose to twice daily, e.g. 20 mg daily - take 10 mg twice daily.";
             document.DisplayText(advice);
          }
 
         else if (detail == "DV") // if Diarrhea/Vomiting
         {
-            advice = "If you vomit once, take an extra 5 mg of Prednisolone.  !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection. ";
+            advice = "If you vomit once, take an extra 5 mg of Prednisolone.  !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! ";
             document.DisplayText(advice);
         }
             
         else if (detail == "E") // Extremely unwell
         {
-            advice = "Take an extra 20mg of Prednisolone and seek medical advice.";
+            advice = "Take an extra 20 mg of Prednisolone and seek medical advice.";
             document.DisplayText(advice);
         }
             
         else if (detail == "MN") // Minor Dental Surgery
+        {
             advice = "Take 5 mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ";
             document.DisplayText(advice);
+        }
+            
         break; // break for case "P"
 
     // Hydrocortisone
@@ -167,9 +177,9 @@ switch (steroidMed)
             advice = "Double your current dose for the duration of your illness. If it lasts < 7 days, you can switch back to your usual dose the day after. If it lasts > 7 days, seek advice from your clinician.";
             document.DisplayText(advice);
         }
-         else if (detail == "DV") // if Diarrhea/Vomiting
+        else if (detail == "DV") // if Diarrhea/Vomiting
         {
-            advice = "If you vomit once, take an extra 20 mg of Hydrocortisone by mouth. !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection. ";
+            advice = "If you vomit once, take an extra 20 mg of Hydrocortisone by mouth. !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.";
             document.DisplayText(advice);
         }
         else if (detail == "MN") // Minor Dental Surgery
@@ -233,6 +243,7 @@ Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_pat
 Generated on: {dateTime}
 ";
 
+Console.WriteLine("\r\n*** SICK DAY RULE SUMMARY ***");
 // Generate Sick Day Rule File
 document.WriteToFile(sickDayDose, $"Sick Day Rule - {firstName} {lastName} | {mrn}.txt");
 
@@ -254,7 +265,7 @@ do
 
     if (!restart)
     {
-        Console.WriteLine("Exiting program. Goodbye!");
+        Console.WriteLine("Thank you for using the 'Sick Day Rule' Program. Goodbye!");
     }
 } // End of While Loop
 // PROGRAM END
