@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sdr-app")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b861ee1e85d8a7f0ab3613ee3401ec229e28c12b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+313a6f0760c5f6ee20010dbcc3b74784b67f2aad")]
 [assembly: System.Reflection.AssemblyProductAttribute("sdr-app")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sdr-app")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

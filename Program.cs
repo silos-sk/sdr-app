@@ -1,5 +1,4 @@
-﻿using System;
-DateTime dateTime = DateTime.Now;
+﻿DateTime dateTime = DateTime.Now;
 
 Console.WriteLine("Welcome to the 'Sick Day Rule' Program");
 
@@ -26,7 +25,9 @@ Console.WriteLine("Produce your own tailored Sick Day Rule dosage according to y
 // MEDICATION
 Console.WriteLine("> What steroid medication are you on? Type H for Hydrocortisone, P for Prednisolone");
 // store user-entered steroid medication to variable
-string? steroidMed = Console.ReadLine();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+string? steroidMed = Console.ReadLine().ToUpper();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 // Medication Dose
 Console.WriteLine("> What daily dosage are you on? Enter number in mg");
@@ -39,7 +40,9 @@ Console.WriteLine($"You are currently on {(steroidMed == "H" ? "Hydrocortisone" 
 // PURPOSE
 Console.WriteLine("> Are you experiencing Symptoms or having a Procedure done? Type P for Procedure, S for Symptoms");
 // store user-entered purpose to variable
-string? purpose = Console.ReadLine();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+string? purpose = Console.ReadLine().ToUpper();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 if (purpose == "S")
 {
@@ -56,37 +59,59 @@ MJ for Major Dental Surgery
 S for Surgery/Invasive Procedures");
 }
 ;
-string? detail = Console.ReadLine();
-
-Console.WriteLine($"You would like to know your steroid dose for: ");
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+string? detail = Console.ReadLine().ToUpper();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 // string ?questionPurpose = Console.ReadLine();
+
+const string F = "Fever";
+const string C = "Covid";
+const string DV = "Diarrhea/Vomiting";
+const string E = "Extremely Unwell";
+const string P = "Pregnancy"; 
+const string MN = "Minor Dental Surgery";
+const string MJ = "Major Dental Surgery";
+const string S = "Surgery/Invasive Procedures";
+var message = "";
+
+void ShowData(string a)
+{
+    Console.WriteLine(a); 
+    message = Console.ReadLine();
+}
+
 
 switch (detail)
 {
     case "F":
-        Console.WriteLine("Fever");
+        ShowData(F);
         break;
     case "C":
-        Console.WriteLine("Covid");
+        ShowData(C);
         break;
     case "DV":
-        Console.WriteLine("Diarrhea/Vomiting");
+        ShowData(DV);
         break;
     case "E":
-        Console.WriteLine("Extremely Unwell");
+        ShowData(E);
         break;
     case "P":
-        Console.WriteLine("Pregnancy");
+        ShowData(P);
         break;
     case "MN":
-        Console.WriteLine("Minor Dental Surgery");
+        ShowData(MN);
         break;
     case "MJ":
-        Console.WriteLine("Major Dental Surgery");
+        ShowData(MJ);
         break;
     case "S":
-        Console.WriteLine("Surgery/Invasive Procedure");
+        ShowData(S);
+        break;
+    default:
+        Console.WriteLine(" You did not type a valid option.");
+        Console.WriteLine();
+        Console.ReadLine();
         break;
 } // closing tag for switch
 
@@ -148,21 +173,58 @@ switch (steroidMed)
         break;
 } // closing switch steroidMed statement
 
+// string message = "";
+// if (steroidMed == "P" || steroidMed == "H")
+// {
+//     switch(message)
+//     if (detail == "F")
+//     {
+//         Console.WriteLine("Take 20 mg every 6 hours");
+//     }    
+//     else if (detail == "C")
+//     {
+//         Console.WriteLine("Take Hydrocortisone 20mg every 6 hours");
+//         Console.ReadLine();
+//     }    
+//     else if (detail == "MJ")
+//     {
+//         Console.WriteLine("You may need 100mg of IM Hydrocortisone before major dental work anaesthesia – discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.");
+//         Console.ReadLine();
+//     }
+//     else if (detail == "S")
+//     {
+//         Console.WriteLine(" 100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.");
+//         Console.ReadLine();
+//     }    
+//     // string ?otherAdvice = Console.ReadLine();
+   
+// }
+
 if (steroidMed == "P" || steroidMed == "H")
 {
     if (detail == "F")
+    {
         Console.WriteLine("Take 20 mg every 6 hours");
+    }    
     else if (detail == "C")
+    {
         Console.WriteLine("Take Hydrocortisone 20mg every 6 hours");
+        Console.ReadLine();
+    }    
     else if (detail == "MJ")
+    {
         Console.WriteLine("You may need 100mg of IM Hydrocortisone before major dental work anaesthesia – discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.");
+        Console.ReadLine();
+    }
     else if (detail == "S")
+    {
         Console.WriteLine(" 100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.");
+        Console.ReadLine();
+    }    
     // string ?otherAdvice = Console.ReadLine();
-
+   
 }
-
- string ?advice = Console.ReadLine();
+  string ?advice =  Console.ReadLine();
 
 // Write SDR note:
 
@@ -174,7 +236,7 @@ MRN: {mrn}
 Steroid Medication: {(steroidMed == "H"? "Hydrocortisone" : "Prednisolone")}
 Daily dosage: {steroidDose} mg
 
-Dosage Advice for: {detail}
+Dosage Advice for: {message}
 
 {advice}
 
@@ -186,6 +248,6 @@ Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_pat
 Generated on: {dateTime}
 ";
 
-GenereateFile newFile = new GenereateFile();
+Document newFile = new Document();
 
 newFile.WriteToFile(sickDayDose, $"Sick Day Rule - {firstName} {lastName} | {mrn}.txt");

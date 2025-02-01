@@ -1,6 +1,4 @@
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-class GenereateFile
+class Document
 {
     public string writeText = string.Empty;
     public string fileName = "sdr.txt"; 
@@ -12,6 +10,8 @@ class GenereateFile
         string readText = File.ReadAllText(fileName);  // Read the contents of the file
         Console.WriteLine(readText);  // Output the content 
     }
+
+
      
 }
 
