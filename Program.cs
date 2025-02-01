@@ -121,32 +121,32 @@ switch (steroidMedStr)
         // Prednisolone dose for Fever
         if (steroidDose <= 10 && detailStr == "F")
         { // Prednisolone dose <= 10 mg
-            advice = "Take 5 mg twice daily.";
+            advice = "Take 5 mg of Prednisolone twice daily.";
             document.DisplayText(advice);
         } 
         // Prednisolone dose > 10 mg
         else if (steroidDose > 10 && detailStr == "F")
         {
-            advice = "Split daily dose to twice daily.";
+            advice = "Split daily dose of Prednisolone to twice daily.";
             document.DisplayText(advice);
         }
 
         // Prednisolone dose for Covid
         else if (steroidDose <= 10 && detailStr == "C")
         { // Prednisolone dose <= 10 mg
-            advice = "Take 10 mg twice daily.";
+            advice = "Take 10 mg of Prednisolone twice daily.";
             document.DisplayText(advice);
         }
         // Prednisolone dose > 10 mg
         else if (steroidDose > 10 && detailStr == "C")
          {   
-            advice = "Split daily dose to twice daily, e.g. 20 mg daily - take 10 mg twice daily.";
+            advice = "Split daily dose of Prednisolone to twice daily, e.g. 20 mg daily - take 10 mg twice daily.";
             document.DisplayText(advice);
          }
 
         else if (detailStr == "D") // if Diarrhea/Vomiting
         {
-            advice = "If you vomit once, take an extra 5 mg of Prednisolone.  !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! ";
+            advice = "If you vomit once, take an extra 5 mg of Prednisolone.\r\n\r\n!!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999.!!!\r\n\r\nTake your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.";
             document.DisplayText(advice);
         }
             
@@ -181,12 +181,12 @@ switch (steroidMedStr)
          // Hydrocortisone dose < 10 mg
         else if (steroidDose < 10)
         { 
-            advice = "Double your current dose for the duration of your illness. If it lasts < 7 days, you can switch back to your usual dose the day after. If it lasts > 7 days, seek advice from your clinician.";
+            advice = "Double your current dose of Hydrocortisone for the duration of your illness. If it lasts < 7 days, you can switch back to your usual dose the day after. If it lasts > 7 days, seek advice from your clinician.";
             document.DisplayText(advice);
         }
         else if (detailStr == "D") // if Diarrhea/Vomiting
         {
-            advice = "If you vomit once, take an extra 20 mg of Hydrocortisone by mouth. !!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999. !!! Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.";
+            advice = "If you vomit once, take an extra 20 mg of Hydrocortisone by mouth.\r\n\r\n!!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999.!!!\r\n\r\nTake your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.";
             document.DisplayText(advice);
         }
         else if (detailStr == "M") // Minor Dental Surgery

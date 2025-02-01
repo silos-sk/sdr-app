@@ -1,14 +1,18 @@
 
 STEROID SICK DAY RULES 
-Patient: SHAIRA SILOS 
-MRN: 3888816
+Patient: EMILY SAUNDERS 
+MRN: 4382718
 
 Steroid Medication: PREDNISOLONE
 Daily dosage: 10 mg
 
-Dosage Advice for: FEVER
+Dosage Advice for: 
 
-Take 5 mg of Prednisolone twice daily.
+If you vomit once, take an extra 5 mg of Prednisolone.
+
+!!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999.!!!
+
+Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.
 
 ***
 What are the signs and symptoms of an adrenal crisis? 
@@ -19,4 +23,4 @@ If you are unwell, make sure that the person treating you knows you are at risk 
 
 Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
 
-Generated on: 2/1/2025 6:41:38 PM
+Generated on: 2/1/2025 6:43:40 PM
