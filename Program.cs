@@ -7,25 +7,7 @@ while (restart) // PROGRAM START
 {
 Console.WriteLine("\r\n*** Welcome to the 'Sick Day Rule' Program ***");
 
-// ENTER USER DETAILS:
-// Type your first name and press enter
-// Console.WriteLine("Enter your first name:");
-// // store user-entered first name to variable
-// string? firstName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
-
-// // Type your last name and press enter
-// Console.WriteLine("Enter your last name:");
-// // store user-entered last name to variable
-// string? lastName = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
-
-// // Type your MRN and press enter
-// Console.WriteLine("Enter your MRN:");
-// // store user-entered mrn to variable
-// string? mrn = Console.ReadLine()?.Trim().ToUpper(); // Normalize input
-
-// // Print the user info
-// Console.WriteLine($"\r\n[ Hi, {firstName} {lastName}; MRN: {mrn} ]\r\n");
-
+// PATIENT DETAILS
 string firstName = document.GetValidatedName("Enter your first name:");
 string lastName = document.GetValidatedName("Enter your last name:");
 long mrn = document.GetValidatedMRN("Enter your 7-digit MRN:");
@@ -34,7 +16,7 @@ Console.WriteLine($"\r\n[ Hi, {firstName} {lastName}; MRN: {mrn} ]\r\n");
 Console.WriteLine("Produce your own tailored Sick Day Rule dosage according to your current steroid medication. Follow the prompts below and answer accordingly. \r\n");
 
 // MEDICATION
-// store user-entered steroid medication to variable
+// Store user-entered steroid medication to variable
 char[] steroidMedOptions = { 'H', 'P' }; // Allowed options
 char steroidMed = document.GetValidatedChoice("> What steroid medication are you on? Type H for Hydrocortisone, P for Prednisolone", steroidMedOptions);
 string steroidMedStr = Convert.ToString(steroidMed);
@@ -116,7 +98,7 @@ string advice = "";
 
 // DOSAGE ADVICE
 switch (steroidMedStr)
-{   // Prednisolone
+{   // Prednisolone SDR Advice
     case "P": 
         // Prednisolone dose for Fever
         if (steroidDose <= 10 && detailStr == "F")
@@ -130,7 +112,6 @@ switch (steroidMedStr)
             advice = "Split daily dose of Prednisolone to twice daily.";
             document.DisplayText(advice);
         }
-
         // Prednisolone dose for Covid
         else if (steroidDose <= 10 && detailStr == "C")
         { // Prednisolone dose <= 10 mg
@@ -143,28 +124,24 @@ switch (steroidMedStr)
             advice = "Split daily dose of Prednisolone to twice daily, e.g. 20 mg daily - take 10 mg twice daily.";
             document.DisplayText(advice);
          }
-
         else if (detailStr == "D") // if Diarrhea/Vomiting
         {
             advice = "If you vomit once, take an extra 5 mg of Prednisolone.\r\n\r\n!!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999.!!!\r\n\r\nTake your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.";
             document.DisplayText(advice);
-        }
-            
+        }   
         else if (detailStr == "E") // Extremely unwell
         {
             advice = "Take an extra 20 mg of Prednisolone and seek medical advice.";
             document.DisplayText(advice);
         }
-            
         else if (detailStr == "MN") // Minor Dental Surgery
         {
             advice = "Take 5 mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ";
             document.DisplayText(advice);
         }
-            
         break; // break for case "P"
 
-    // Hydrocortisone
+    // Hydrocortisone SDR Advice
     case "H": 
         // Hydrocortisone dose for Fever
         if (steroidDose >= 10 && detailStr == "F")
@@ -203,19 +180,19 @@ switch (steroidMedStr)
 
     default:
         break;
-} // closing switch steroidMed statement
+} // closing switch steroidMedStr statement
 
+// SDR advice applicable to both Prednisolone and Hydrocortisone
 if (steroidMedStr == "P" || steroidMedStr == "H") // Either on Prednisolone/HC
 {
     if (detailStr == "P") // Pregnancy
         {
             advice = "Carry on normal doses unless advised by your HCP.  At the onset of labour or start of a caesarean section, to start a continuous IV infusion of 200 mg Hydrocortisone over 24 hours (alternatively 50 mg of Hydrocortisone IV or IM every 6 hours). Double usual oral dose for 48 hours after the baby is born.";
             document.DisplayText(advice);
-        }
-        
+        }  
     else if (detailStr == "J") // Major Dental Surgery
     {
-        advice = "You may need 100mg of IM Hydrocortisone before major dental work anaesthesia – discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.";
+        advice = "You may need 100 mg of IM Hydrocortisone before major dental work anaesthesia - discuss in advance with your dentist. Take a double dose for 24 hours after any dental procedure, then return to your normal dose.";
         document.DisplayText(advice);
     }
     else if (detailStr == "S") // Surgery/Invasive Procedures
@@ -254,13 +231,13 @@ Console.WriteLine("\r\n*** SICK DAY RULE SUMMARY ***");
 // Generate Sick Day Rule File
 document.WriteToFile(sickDayDose, $"Sick Day Rule - {firstName} {lastName} | {mrn}.txt");
 
-// Restart program option
+// RESTART PROGRAM OPTION
 string? input;
 do
 {
     Console.Write("Do you want to restart the program? (Yes/No): ");
     input = Console.ReadLine()?.Trim().ToLower();
-
+    // While user enters invalid input, display error prompt.
     if (input != "yes" && input != "no")
     {
         Console.WriteLine("Invalid input. Please type 'Yes' or 'No'.");
@@ -268,9 +245,9 @@ do
 
 } while (input != "yes" && input != "no");
 
-    restart = (input == "yes");
+    restart = (input == "yes"); // If user chooses 'Yes', restart program
 
-    if (!restart)
+    if (!restart) // If user chooses 'No', exit program
     {
         Console.WriteLine("Thank you for using the 'Sick Day Rule' Program. Goodbye!");
     }

@@ -1,10 +1,10 @@
 using System.Text.RegularExpressions;
-
+// Helper class handling document methods for writing and validating input
 class Document
 {
     public string writeText = string.Empty;
     public string fileName = "sdr.txt"; 
-
+    // Create a file from selected text and designated file name
     public void WriteToFile (string ?writeText, string fileName)
     {
         File.WriteAllText(fileName, writeText);  // Create a file and write the content of writeText to it
@@ -13,11 +13,13 @@ class Document
         Console.WriteLine(readText);  // Output the content 
     }
     
+    // Display text to console
     public void DisplayText(string a)
     {
         Console.WriteLine(a);
     }
 
+    // Validate string input
     public string GetValidatedInput(string prompt)
     {
         string? input;
@@ -36,6 +38,7 @@ class Document
         return input;
     }
 
+    // Validate name input
     public string GetValidatedName(string prompt)
     {
         string? input;
@@ -54,6 +57,7 @@ class Document
         return input.ToUpper(); // Normalize to uppercase
     }
 
+    // Validate MRN input
     public long GetValidatedMRN(string prompt)
     {
         long number;
@@ -74,6 +78,7 @@ class Document
         return number;
     }
 
+    // Validate number input
     public int GetValidatedNumber(string prompt)
     {
         int number;
@@ -94,6 +99,7 @@ class Document
         return number;
     }
 
+    // Validate input according to allowed choices
     public char GetValidatedChoice(string prompt, char[] validChoices)
     {
         string? input;
@@ -117,7 +123,7 @@ class Document
     }
     static bool IsNumeric(string input)
     {
-        return long.TryParse(input, out _);
+        return long.TryParse(input, out _); // Ensures only numbers
     }
 
      
