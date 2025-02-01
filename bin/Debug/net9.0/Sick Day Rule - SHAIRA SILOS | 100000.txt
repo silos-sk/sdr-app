@@ -1,14 +1,14 @@
 
 STEROID SICK DAY RULES 
-Patient: 1 2 
-MRN: 1
+Patient: SHAIRA SILOS 
+MRN: 100000
 
-Steroid Medication: Prednisolone
-Daily dosage: 10 mg
+Steroid Medication: Hydrocortisone
+Daily dosage: 15 mg
 
-Dosage Advice for: Minor Dental Surgery
+Dosage Advice for: Covid
 
-Take 5 mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. 
+Take 20 mg of Hydrocortisone every 6 hours.
 
 ***
 What are the signs and symptoms of an adrenal crisis? 
@@ -19,4 +19,4 @@ If you are unwell, make sure that the person treating you knows you are at risk 
 
 Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
 
-Generated on: 2/1/2025 4:51:33 PM
+Generated on: 2/1/2025 6:29:38 PM

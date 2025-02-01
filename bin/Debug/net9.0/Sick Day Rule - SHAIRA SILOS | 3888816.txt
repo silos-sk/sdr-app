@@ -3,12 +3,12 @@ STEROID SICK DAY RULES
 Patient: SHAIRA SILOS 
 MRN: 3888816
 
-Steroid Medication: Prednisolone
-Daily dosage: 20 mg
+Steroid Medication: PREDNISOLONE
+Daily dosage: 5 mg
 
-Dosage Advice for: Surgery/Invasive Procedures
+Dosage Advice for: FEVER
 
- 100 mg of Hydrocortisone by IV or IM injection at the start of surgery followed by a continuous IV infusion of 200 mg Hydrocortisone over 24 hours, or 50 mg of Hydrocortisone IV or IM every 6 hours. Double usual dose when eating and drinking and reduce to usual dose over the next 1-2 weeks as you recover.
+Take 5 mg twice daily.
 
 ***
 What are the signs and symptoms of an adrenal crisis? 
@@ -19,4 +19,4 @@ If you are unwell, make sure that the person treating you knows you are at risk 
 
 Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
 
-Generated on: 2/1/2025 5:32:31 PM
+Generated on: 2/1/2025 6:37:59 PM

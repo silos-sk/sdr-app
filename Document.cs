@@ -99,7 +99,7 @@ class Document
         string? input;
         do
         {
-            Console.WriteLine($"{prompt} ({string.Join("/", validChoices)}):");
+            Console.WriteLine($"{prompt}");
             input = Console.ReadLine()?.Trim().ToUpper();
 
             if (string.IsNullOrEmpty(input) || input.Length != 1 || !validChoices.Contains(input[0]))
