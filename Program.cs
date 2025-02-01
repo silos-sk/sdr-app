@@ -1,7 +1,10 @@
 ﻿DateTime dateTime = DateTime.Now;
-
 Document document = new Document();
 
+bool restart = true;
+
+while (restart) // PROGRAM START
+{
 Console.WriteLine("Welcome to the 'Sick Day Rule' Program");
 
 // ENTER USER DETAILS:
@@ -149,7 +152,7 @@ switch (steroidMed)
         // Hydrocortisone dose for Fever
         if (steroidDose >= 10 && detail == "F")
         { // Hydrocortisone dose > 10 mg
-            advice = "Take 20 mg of Hydrocortisone immediately, then 10 mg 6 hourly";
+            advice = "Take 20 mg of Hydrocortisone immediately, then 10 mg 6 hourly.";
             document.DisplayText(advice);
         }
         // Hydrocortisone dose >= 10 mg for Covid
@@ -189,7 +192,7 @@ if (steroidMed == "P" || steroidMed == "H") // Either on Prednisolone/HC
 {
     if (detail == "P") // Pregnancy
         {
-            advice = "Carry on normal doses unless advised by your HCP.  At the onset of labour or start of a caesarean section, to start a continuous IV infusion of 200 mg Hydrocortisone over 24 hours (alternatively 50 mg of Hydrocortisone IV or IM every 6 hours). Double usual oral dose for 48 hours after the baby is born.  ";
+            advice = "Carry on normal doses unless advised by your HCP.  At the onset of labour or start of a caesarean section, to start a continuous IV infusion of 200 mg Hydrocortisone over 24 hours (alternatively 50 mg of Hydrocortisone IV or IM every 6 hours). Double usual oral dose for 48 hours after the baby is born.";
             document.DisplayText(advice);
         }
         
@@ -206,7 +209,6 @@ if (steroidMed == "P" || steroidMed == "H") // Either on Prednisolone/HC
 }
 
 // Write SDR note:
-
 string? sickDayDose = $@"
 STEROID SICK DAY RULES 
 Patient: {firstName} {lastName} 
@@ -219,14 +221,40 @@ Dosage Advice for: {conditionQuery}
 
 {advice}
 
+***
 What are the signs and symptoms of an adrenal crisis? 
+
 Low blood pressure. Feeling dizzy or light-headed. Fever, shivering or feeling very cold. Nausea and /or vomiting. Feeling very weak. Extreme tiredness, drowsiness or confusion. Aching muscles and/or joints. Stomach ache. Severe diarrhoea. 
+
+If you are unwell, make sure that the person treating you knows you are at risk of adrenal crisis and show them your NHS Steroid Emergency Card 
 
 Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
 
 Generated on: {dateTime}
 ";
 
-Document newFile = new Document();
+// Generate Sick Day Rule File
+document.WriteToFile(sickDayDose, $"Sick Day Rule - {firstName} {lastName} | {mrn}.txt");
 
-newFile.WriteToFile(sickDayDose, $"Sick Day Rule - {firstName} {lastName} | {mrn}.txt");
+// Restart program option
+string? input;
+do
+{
+    Console.Write("Do you want to restart the program? (Yes/No): ");
+    input = Console.ReadLine()?.Trim().ToLower();
+
+    if (input != "yes" && input != "no")
+    {
+        Console.WriteLine("Invalid input. Please type 'Yes' or 'No'.");
+    }
+
+} while (input != "yes" && input != "no");
+
+    restart = (input == "yes");
+
+    if (!restart)
+    {
+        Console.WriteLine("Exiting program. Goodbye!");
+    }
+} // End of While Loop
+// PROGRAM END
