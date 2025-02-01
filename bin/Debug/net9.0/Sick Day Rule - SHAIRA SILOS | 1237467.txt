@@ -1,16 +1,14 @@
 
 STEROID SICK DAY RULES 
-Patient: CLAIRE PETERSON 
-MRN: 2984291
+Patient: SHAIRA SILOS 
+MRN: 1237467
 
 Steroid Medication: HYDROCORTISONE
-Daily dosage: 15 mg
+Daily dosage: 20 mg
 
-Dosage Advice for: 
+Dosage Advice for: FEVER
 
-If you vomit once, take an extra 20 mg of Hydrocortisone by mouth.
-!!! If vomiting persists after you have taken the extra steroid dose, you must seek urgent medical attention: go to the Emergency Department, or call an ambulance via 999.!!!
-Take your NHS Steroid Emergency Card with you and ensure that the team looking after you know that you are on steroid medication and that you are at risk of adrenal crisis and may need a steroid injection.
+Take 20 mg of Hydrocortisone immediately, then 10 mg 6 hourly.
 
 ***
 What are the signs and symptoms of an adrenal crisis? 
@@ -21,4 +19,4 @@ If you are unwell, make sure that the person treating you knows you are at risk 
 
 Resource: https://www.endocrinology.org/media/4169/ai-and-exogenous-steroids_patient-information-sheet.pdf
 
-Generated on: 2/1/2025 6:41:38 PM
+Generated on: 2/1/2025 7:48:41 PM

@@ -68,11 +68,11 @@ Scenario[] conditions =
         [
             new Scenario("F", "Fever"),
             new Scenario("C", "COVID"),
-            new Scenario("DV", "Diarrhea/Vomiting"),
+            new Scenario("D", "Diarrhea/Vomiting"),
             new Scenario("E", "Extremely Unwell"),
             new Scenario("P", "Pregnancy"),
-            new Scenario("MN", "Minor Dental Surgery"),
-            new Scenario("MJ", "Major Dental Surgery"),
+            new Scenario("M", "Minor Dental Surgery"),
+            new Scenario("J", "Major Dental Surgery"),
             new Scenario("S", "Surgery/Invasive Procedures")
         ];
 
@@ -134,7 +134,7 @@ switch (steroidMedStr)
             advice = "Take an extra 20 mg of Prednisolone and seek medical advice.";
             document.DisplayText(advice);
         }
-        else if (detailStr == "MN") // Minor Dental Surgery
+        else if (detailStr == "M") // Minor Dental Surgery
         {
             advice = "Take 5 mg of Prednisolone one hour prior to procedure and take a double dose for 24 hours after the procedure, then return to your normal dose. ";
             document.DisplayText(advice);
