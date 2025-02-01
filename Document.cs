@@ -10,6 +10,16 @@ class Document
         string readText = File.ReadAllText(fileName);  // Read the contents of the file
         Console.WriteLine(readText);  // Output the content 
     }
+    
+    public void DisplayText(string a)
+    {
+        Console.WriteLine(a);
+    }
+
+    public void StoreNormalizedUpper(string b)
+    {
+        Console.ReadLine()?.Trim().ToUpper();
+    }
 
 
      
