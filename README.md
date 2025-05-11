@@ -13,7 +13,7 @@ This is a C# console-based app aimed at providing information on 'Sick Day Rules
 8. Read/Write to a File
 
 ## Demo Video
-Video walkthrough inluded in Canvas submission
+https://youtu.be/DcSph6y5BL4?si=t7yzpLIdCzbU9DrE
 
 ## Development Environment
 C#
